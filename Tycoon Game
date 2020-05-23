@@ -67,7 +67,8 @@ public class TycoonGame {
 		if(select.equals("Start") || select.equals("start")) {
 			System.out.println("To start your journey, buy a lemonadestand by using the BUY option (PRESS 1)"
 					+ "\n After that, select the company you would like to buy");
-			
+			new TycoonGame();
+			new buy();
 		}
 	}
 }
