@@ -1,0 +1,29 @@
+
+public class TycoonBank {
+
+	private double balance;
+	private double deposit;
+	private double withdraw;
+	
+	public TycoonBank(double balance) {
+		this.balance = balance;
+	}
+	public void deposit(double depositAmount) {
+		if(depositAmount >= 0 )
+		{
+			balance = balance + depositAmount;
+		}
+	}
+	public void withdraw(double withdrawAmount) {
+		if(withdrawAmount >= 0.00 && withdrawAmount <= balance) {
+			balance = balance - withdrawAmount;
+		}
+		else
+		{
+			System.out.println("You cannot buy that right now");
+		}
+	}
+	public double getBalance() {
+		return balance;
+	}
+}
