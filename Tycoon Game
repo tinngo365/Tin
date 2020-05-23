@@ -1,0 +1,73 @@
+import java.util.Scanner;
+import java.math.*;
+import java.util.Timer;
+import java.util.TimerTask;
+import java.text.DecimalFormat;
+
+
+
+public class TycoonGame {
+	Scanner sc = new Scanner(System.in);
+	static int lemonadeStands = 1;
+	static int Store = 0;
+	static int Hotels = 0;
+	
+	static double LemonadeStandProfit = 1.50 * lemonadeStands;
+	static double StoreProfit = 50.99 * Store;
+	static double HotelsProfit = 250.01 * Hotels;
+	
+	static double LemonadeStandCost = 10 * Math.pow(1.1, lemonadeStands);
+	static double StoreCost = 2000 * Math.pow(1.1, Store);
+	static double HotelsCost = 100_000 * Math.pow(1.1, Hotels);
+	
+	static int days = 0;
+	
+	Timer timer;
+	class buy implements Runnable{
+		public void run() {
+			Scanner sc = new Scanner(System.in);
+			int select = sc.nextInt();
+			if(select == 1) {
+				lemonadeStands++;
+			}
+		}
+	}
+	public TycoonGame() {
+		timer = new Timer();
+		timer.schedule(new time(), 0, 1000);
+		
+	}
+	
+	TycoonBank Player1 = new TycoonBank(10.00);
+	class time extends TimerTask {
+		DecimalFormat DF = new DecimalFormat("#.##");
+		public void run() {
+		if(true) {
+			DF.setGroupingUsed(true);
+			DF.setGroupingSize(3);
+			days++;
+			Player1.deposit(LemonadeStandProfit + StoreProfit + HotelsProfit);
+			
+			
+			
+			
+			
+			System.out.println("Your Businesses\n________________________");
+			System.out.println("\n\nDay: " + days + "\nCurrent Balance: $" + DF.format(Player1.getBalance()));
+		}
+	}
+	}
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+		System.out.println("Welcome to Tin's Tycoon game! Start with $10.00 and become rich!"
+				+ "\nStart by TYPING 'Start'");
+		String select = sc.nextLine();
+		select = select.replaceAll("\\s", "");
+		select = select.replaceAll("\\W", "");
+		if(select.equals("Start") || select.equals("start")) {
+			System.out.println("To start your journey, buy a lemonadestand by using the BUY option (PRESS 1)"
+					+ "\n After that, select the company you would like to buy");
+			
+		}
+	}
+}
