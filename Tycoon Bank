@@ -2,28 +2,91 @@
 public class TycoonBank {
 
 	private double balance;
-	private double deposit;
-	private double withdraw;
+	
+	private int LemonadeStands = 0;
+	private int Stores = 0;
+	private int Hotels = 0;
+	
+	private double LemonadeStandsCost = 10 * Math.pow(1.1, LemonadeStands);
+	private double StoresCost = 2000 * Math.pow(1.1, Stores);
+	private double HotelsCost = 100_000 * Math.pow(1.1, Hotels);
+	
+	private int days = 0;
 	
 	public TycoonBank(double balance) {
 		this.balance = balance;
 	}
-	public void deposit(double depositAmount) {
-		if(depositAmount >= 0 )
-		{
-			balance = balance + depositAmount;
-		}
+	public int getDays() {
+		if(LemonadeStands >= 1) {
+			days++;
+			}
+		return days;
 	}
-	public void withdraw(double withdrawAmount) {
-		if(withdrawAmount >= 0.00 && withdrawAmount <= balance) {
-			balance = balance - withdrawAmount;
-		}
-		else
-		{
-			System.out.println("You cannot buy that right now");
-		}
+	public void newBalance() {
+		double LemonadeStandsProfit = 1.50 * LemonadeStands;
+		double StoresProfit = 50.99 * Stores;
+		double HotelsProfit = 250.01 * Hotels;
+		balance = balance + LemonadeStandsProfit + StoresProfit + HotelsProfit;
+	}
+	public double getProfit() {
+		double LemonadeStandsProfit = 1.50 * LemonadeStands;
+		double StoresProfit = 50.99 * Stores;
+		double HotelsProfit = 250.01 * Hotels;
+		double profit = LemonadeStandsProfit + StoresProfit + HotelsProfit;
+		return profit;
 	}
 	public double getBalance() {
 		return balance;
+	}
+	public double buyLemonadeStands() {
+		if(balance >= LemonadeStandsCost) {
+		balance = balance - LemonadeStandsCost;
+		LemonadeStands++;
+		}
+		else 
+		{
+		System.out.println("Sorry you don't have sufficient funds.");	
+		}
+		return LemonadeStands;
+	}
+	public double buyStores() {
+		if(balance >= StoresCost) {
+		balance = balance - StoresCost;
+		Stores++;
+		}
+		else 
+		{
+		System.out.println("Sorry you don't have sufficient funds.");	
+		}
+		return Stores;
+	}
+	public double buyHotels() {
+		if(balance >= HotelsCost) {
+		balance = balance - HotelsCost;
+		Hotels++;
+		}
+		else 
+		{
+		System.out.println("Sorry you don't have sufficient funds.");	
+		}
+		return Hotels;
+	}
+	public double getLemonadeStandsCost() {
+		return LemonadeStandsCost;
+	}
+	public double getStoresCost() {
+		return StoresCost;
+	}
+	public double getHotelsCost() {
+		return HotelsCost;
+	}
+	public int getLemonadeStandsAmount() {
+		return LemonadeStands;
+	}
+	public int getStoresAmount() {
+		return Stores;
+	}
+	public int getHotelsAmount() {
+		return Hotels;
 	}
 }
