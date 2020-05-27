@@ -70,6 +70,7 @@ public class TycoonGame {
 				choose = sc.nextInt();
 				if(choose == 1) {
 					val = AB.compareAndSet(true, false);
+					val = AB.compareAndSet(true, false);
 					System.out.println("What would you like to buy?"
 							+ "\nLemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()) + " PRESS (1)"
 							+ "\nStore: $" + DF.format(Player1.getStoresCost()) + " PRESS (2)"
