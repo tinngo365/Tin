@@ -12,7 +12,7 @@ public class TycoonGame {
 	Timer timer;
 	public TycoonGame() {
 		timer = new Timer(true);
-		timer.schedule(new time(), 1000, 1000);
+		timer.schedule(new time(), 0, 1000);
 	}
 	
 	class time extends TimerTask {
