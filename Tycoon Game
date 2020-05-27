@@ -4,71 +4,90 @@ import java.util.Timer;
 import java.util.TimerTask;
 import java.text.DecimalFormat;
 
-
-
 public class TycoonGame {
-	Scanner sc = new Scanner(System.in);
-	static int lemonadeStands = 1;
-	static int Store = 0;
-	static int Hotels = 0;
+	private boolean running;
+	DecimalFormat DF = new DecimalFormat("#.##");
 	
-	static double LemonadeStandProfit = 1.50 * lemonadeStands;
-	static double StoreProfit = 50.99 * Store;
-	static double HotelsProfit = 250.01 * Hotels;
-	
-	static double LemonadeStandCost = 10 * Math.pow(1.1, lemonadeStands);
-	static double StoreCost = 2000 * Math.pow(1.1, Store);
-	static double HotelsCost = 100_000 * Math.pow(1.1, Hotels);
-	
-	static int days = 0;
-	
+	static TycoonBank Player1 = new TycoonBank(10.00);
 	Timer timer;
-	class buy implements Runnable{
-		public void run() {
-			Scanner sc = new Scanner(System.in);
-			int select = sc.nextInt();
-			if(select == 1) {
-				lemonadeStands++;
-			}
-		}
-	}
 	public TycoonGame() {
-		timer = new Timer();
-		timer.schedule(new time(), 0, 1000);
-		
+		timer = new Timer(true);
+		timer.schedule(new time(), 1000, 1000);
 	}
 	
-	TycoonBank Player1 = new TycoonBank(10.00);
 	class time extends TimerTask {
 		DecimalFormat DF = new DecimalFormat("#.##");
 		public void run() {
 		if(true) {
+			Player1.newBalance();
 			DF.setGroupingUsed(true);
 			DF.setGroupingSize(3);
-			days++;
-			Player1.deposit(LemonadeStandProfit + StoreProfit + HotelsProfit);
-			
-			
-			
-			
-			
-			System.out.println("Your Businesses\n________________________");
-			System.out.println("\n\nDay: " + days + "\nCurrent Balance: $" + DF.format(Player1.getBalance()));
+
+			System.out.println("Your Businesses\n________________________"
+					+ "\nLemonadeStands: " + Player1.getLemonadeStandsAmount()
+					+ "\nStores: " + Player1.getStoresAmount()
+					+ "\nHotels: " + Player1.getHotelsAmount());
+			System.out.println("\n\nDay: " + Player1.getDays() + "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
 		}
 	}
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
+		DecimalFormat DF = new DecimalFormat("#.##");
+		DF.setGroupingUsed(true);
+		DF.setGroupingSize(3);
+		int i = 0;
+		while(i < 1) {
 		System.out.println("Welcome to Tin's Tycoon game! Start with $10.00 and become rich!"
 				+ "\nStart by TYPING 'Start'");
 		String select = sc.nextLine();
 		select = select.replaceAll("\\s", "");
 		select = select.replaceAll("\\W", "");
-		if(select.equals("Start") || select.equals("start")) {
+		select= select.toLowerCase();
+		if(select.equals("start")) {
+			i++;
 			System.out.println("To start your journey, buy a lemonadestand by using the BUY option (PRESS 1)"
-					+ "\n After that, select the company you would like to buy");
+					+ "\nAfter that, select the company you would like to buy");
+			int choose = sc.nextInt();
+			if(choose == 1) {
+				System.out.println("What would you like to buy?"
+						+ "\nLemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()) + " PRESS (1)"
+						+ "\nStore: $" + DF.format(Player1.getStoresCost()) + " PRESS (2)"
+						+ "\nHotels: $" + DF.format(Player1.getHotelsCost()) + " PRESS (3)"
+						+ "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
+				int buyShop = sc.nextInt();
+				if(buyShop == 1) {
+					Player1.buyLemonadeStands();
+				}
+				if(buyShop == 2) {
+					Player1.buyStores();
+				}
+				if(buyShop == 3) {
+					Player1.buyHotels();
+				}
 			new TycoonGame();
-			new buy();
+			while(true) {
+				choose = sc.nextInt();
+				if(choose == 1) {
+					System.out.println("What would you like to buy?"
+							+ "\nLemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()) + " PRESS (1)"
+							+ "\nStore: $" + DF.format(Player1.getStoresCost()) + " PRESS (2)"
+							+ "\nHotels: $" + DF.format(Player1.getHotelsCost()) + " PRESS (3)"
+							+ "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
+					buyShop = sc.nextInt();
+					if(buyShop == 1) {
+						Player1.buyLemonadeStands();
+					}
+					if(buyShop == 2) {
+						Player1.buyStores();
+					}
+					if(buyShop == 3) {
+						Player1.buyHotels();
+							}
+						}
+					}
+				}
+			}
 		}
 	}
 }
