@@ -3,22 +3,23 @@ import java.math.*;
 import java.util.Timer;
 import java.util.TimerTask;
 import java.text.DecimalFormat;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TycoonGame {
-	private boolean running;
+	static AtomicBoolean AB = new AtomicBoolean(true);
+	static boolean val = AB.compareAndSet(true, false);
 	DecimalFormat DF = new DecimalFormat("#.##");
-	
 	static TycoonBank Player1 = new TycoonBank(10.00);
 	Timer timer;
-	public TycoonGame() {
+	public TycoonGame() {	
 		timer = new Timer(true);
 		timer.schedule(new time(), 0, 1000);
 	}
-	
 	class time extends TimerTask {
+		
 		DecimalFormat DF = new DecimalFormat("#.##");
 		public void run() {
-		if(true) {
+			if(val == true) {
 			Player1.newBalance();
 			DF.setGroupingUsed(true);
 			DF.setGroupingSize(3);
@@ -28,8 +29,7 @@ public class TycoonGame {
 					+ "\nStores: " + Player1.getStoresAmount()
 					+ "\nHotels: " + Player1.getHotelsAmount());
 			System.out.println("\n\nDay: " + Player1.getDays() + "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
-		}
-	}
+		}}
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -69,12 +69,14 @@ public class TycoonGame {
 			while(true) {
 				choose = sc.nextInt();
 				if(choose == 1) {
+					val = AB.compareAndSet(true, false);
 					System.out.println("What would you like to buy?"
 							+ "\nLemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()) + " PRESS (1)"
 							+ "\nStore: $" + DF.format(Player1.getStoresCost()) + " PRESS (2)"
 							+ "\nHotels: $" + DF.format(Player1.getHotelsCost()) + " PRESS (3)"
 							+ "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
 					buyShop = sc.nextInt();
+					val = AB.compareAndSet(false, true);
 					if(buyShop == 1) {
 						Player1.buyLemonadeStands();
 					}
