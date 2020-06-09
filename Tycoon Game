@@ -52,27 +52,27 @@ public class TycoonGame {
 			int choose = JOptionPane.showOptionDialog(parent, "To start your journey, buy a lemonadestand by using the BUY option", null, 
 					JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE, null, options1, null);
 			if(choose == JOptionPane.YES_OPTION) {
-				JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
+				int choose1 = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
 				AB.set(true);
-				if(JOptionPane.YES_OPTION == choose) {
+				if(JOptionPane.YES_OPTION == choose1) {
 					Player1.buyLemonadeStands();
 				}
-				if(JOptionPane.NO_OPTION == choose) {
+				if(JOptionPane.NO_OPTION == choose1) {
 					Player1.buyStores();
 				}
-				if(JOptionPane.CANCEL_OPTION == choose) {
+				if(JOptionPane.CANCEL_OPTION == choose1) {
 					Player1.buyHotels();
 				}
 			new TycoonGame();
 			while(true) {
-					JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
-					if(JOptionPane.YES_OPTION == choose) {
+					int choose2 = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
+					if(JOptionPane.YES_OPTION == choose2) {
 						Player1.buyLemonadeStands();
 					}
-					if(JOptionPane.NO_OPTION == choose) {
+					if(JOptionPane.NO_OPTION == choose2) {
 						Player1.buyStores();
 					}
-					if(JOptionPane.CANCEL_OPTION == choose) {
+					if(JOptionPane.CANCEL_OPTION == choose2) {
 						Player1.buyHotels();
 					}
 					AB.set(true);
