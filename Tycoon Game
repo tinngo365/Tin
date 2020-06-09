@@ -37,49 +37,30 @@ public class TycoonGame {
 		DecimalFormat DF = new DecimalFormat("#.##");
 		DF.setGroupingUsed(true);
 		DF.setGroupingSize(3);
-		final JFrame parent = new JFrame();
-        JButton button = new JButton();
-        
-        button.setText("CLICK ME TO START THE GAME!!!");
-        parent.add(button);
-        parent.pack();
-        parent.setVisible(true);
-        
-        button.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-			String[] options1 = {"BUY"};
-			String[] options2 = {"Lemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()), "Store: $" + DF.format(Player1.getStoresCost()), "Hotels: $" + DF.format(Player1.getHotelsCost())};
-			int choose = JOptionPane.showOptionDialog(parent, "To start your journey, buy a lemonadestand by using the BUY option", null, 
-					JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE, null, options1, null);
-			if(choose == JOptionPane.YES_OPTION) {
-				int choose1 = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
-				AB.set(true);
-				if(JOptionPane.YES_OPTION == choose1) {
+		JFrame parent = new JFrame();
+		JButton button = new JButton();
+		String[] options1 = {"BUY"};
+		String[] options2 = {"Lemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()), "Store: $" + DF.format(Player1.getStoresCost()), "Hotels: $" + DF.format(Player1.getHotelsCost())};
+		int choose = JOptionPane.showOptionDialog(parent, "To start your journey, buy a lemonadestand by using the BUY option", null, 
+				JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE, null, options1, null);
+		if(choose == JOptionPane.YES_OPTION) {
+		new TycoonGame();
+		while(true) {
+				int buy = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
+				
+				if(JOptionPane.YES_OPTION == buy) {
 					Player1.buyLemonadeStands();
 				}
-				if(JOptionPane.NO_OPTION == choose1) {
+				if(JOptionPane.NO_OPTION == buy) {
 					Player1.buyStores();
 				}
-				if(JOptionPane.CANCEL_OPTION == choose1) {
+				if(JOptionPane.CANCEL_OPTION == buy) {
 					Player1.buyHotels();
 				}
-			new TycoonGame();
-			while(true) {
-					int choose2 = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
-					if(JOptionPane.YES_OPTION == choose2) {
-						Player1.buyLemonadeStands();
-					}
-					if(JOptionPane.NO_OPTION == choose2) {
-						Player1.buyStores();
-					}
-					if(JOptionPane.CANCEL_OPTION == choose2) {
-						Player1.buyHotels();
-					}
-					AB.set(true);
-				}
-			}
-			}
-		
-        });
+				AB.set(true);
+				
+				
+		}
+		}
 	}
 }
