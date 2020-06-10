@@ -30,7 +30,8 @@ public class TycoonGame {
 					+ "\nStores: " + Player1.getStoresAmount()
 					+ "\nHotels: " + Player1.getHotelsAmount());
 			System.out.println("\n\nDay: " + Player1.getDays() + "\nCurrent Balance: $" + DF.format(Player1.getBalance()) + " | Current Profits: $" + DF.format(Player1.getProfit()));
-		}}
+			}
+		}
 	}
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
@@ -40,27 +41,25 @@ public class TycoonGame {
 		JFrame parent = new JFrame();
 		JButton button = new JButton();
 		String[] options1 = {"BUY"};
-		String[] options2 = {"Lemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()), "Store: $" + DF.format(Player1.getStoresCost()), "Hotels: $" + DF.format(Player1.getHotelsCost())};
 		int choose = JOptionPane.showOptionDialog(parent, "To start your journey, buy a lemonadestand by using the BUY option", null, 
 				JOptionPane.YES_OPTION, JOptionPane.PLAIN_MESSAGE, null, options1, null);
 		if(choose == JOptionPane.YES_OPTION) {
 		new TycoonGame();
 		while(true) {
-				int buy = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
-				
-				if(JOptionPane.YES_OPTION == buy) {
-					Player1.buyLemonadeStands();
-				}
-				if(JOptionPane.NO_OPTION == buy) {
-					Player1.buyStores();
-				}
-				if(JOptionPane.CANCEL_OPTION == buy) {
-					Player1.buyHotels();
-				}
-				AB.set(true);
-				
-				
-		}
+		String[] options2 = {"Lemonade Stand: $" + DF.format(Player1.getLemonadeStandsCost()), "Store: $" + DF.format(Player1.getStoresCost()), "Hotels: $" + DF.format(Player1.getHotelsCost())};
+			int buy = JOptionPane.showOptionDialog(null, "What would you like to buy?", null, JOptionPane.YES_NO_CANCEL_OPTION, JOptionPane.PLAIN_MESSAGE, null, options2, null);
+
+			if(JOptionPane.YES_OPTION == buy) {
+				Player1.buyLemonadeStands();
+			}
+			if(JOptionPane.NO_OPTION == buy) {
+				Player1.buyStores();
+			}
+			if(JOptionPane.CANCEL_OPTION == buy) {
+				Player1.buyHotels();
+			}
+			AB.set(true);	
+			}
 		}
 	}
 }
