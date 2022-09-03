@@ -1,0 +1,11 @@
+Lemonade Stand 10.0 1.5
+News Paper Service 2000.0 75.0
+Cafe 10000.0 200.0
+Restaurant 50000.0 1350.0
+Arcade 150000.0 3000.0
+Grocery Store 500000.0 10000.0
+Movie Theater 2000000.0 20000.0
+Hotel 11000000.0 80000.0
+Casino 30000000.0 150000.0
+Lawn Mowing Service 500.0 45.0
+Sports Center 5000000.0 12000.0
