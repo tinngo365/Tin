@@ -1,5 +1,3 @@
-package Tycoon;
-
 import java.math.*;
 import java.text.DecimalFormat;
 

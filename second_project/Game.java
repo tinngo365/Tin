@@ -1,5 +1,3 @@
-package Tycoon;
-
 import java.awt.BorderLayout;
 
 import java.util.Timer;
@@ -143,7 +141,7 @@ public class Game implements ActionListener {
 		bottomPanel.setLayout(new GridLayout(1, 2));
 
 		// File that has all the stores - add more if you want >:)
-		File storeFile = new File("../../../eclipse-workspace/Com S 227/TycoonGameImproved/src/Tycoon/StoreType.txt");
+		File storeFile = new File(System.getProperty("user.dir") + "/second_project/StoreType.txt");
 		Scanner read = new Scanner(storeFile);
 
 		// Reads into the file to create and add to stores into the array list
@@ -184,7 +182,7 @@ public class Game implements ActionListener {
 		frame.add(bottomPanel, BorderLayout.SOUTH);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setTitle("Tins Capital!");
-		frame.setSize(800, 800);
+		frame.setSize(1000, 800);
 		frame.setVisible(true);
 
 		// Timer that ticks every second to start the game.
@@ -283,7 +281,7 @@ public class Game implements ActionListener {
 		// password. After adding new info into the store, it will sort it into the
 		// store type txt with file writer and it will also update what is in the loaded
 		// file to save progess.
-		File f = new File("Test.txt");
+		File f = new File(System.getProperty("user.dir") + "/second_project/Test.txt");
 		Scanner sc = new Scanner(f);
 		FileWriter fw = new FileWriter(f, true);
 		PrintWriter pw = new PrintWriter(fw);

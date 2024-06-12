@@ -1,7 +1,10 @@
+## 2024
+Hi!
 
+Welcome to my GitHub! My name is Tin Ngo and I am senior software engineering student at Iowa State on track to graduate in Decemeber 2024. This is my dumping grounds for all of my personal projects/stuffz. I love to see my progression as a software engineer. It's funny looking back a few years ago and being so proud of my little mini games! I thought I was onto something while developing my first and second project... I have learned a lot! Please feel free to look around! I put a lot of effort into it.
+ 
 
-
-### 2022
+## 2022
 I'm learning
 
 These are my personal projects that I have worked on.
