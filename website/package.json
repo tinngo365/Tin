@@ -2,9 +2,9 @@
   "name": "website",
   "version": "1.0.0",
   "description": "Tin's personal website project",
-  "main": "index.js",
+  "main": "../../client/src/index.jsindex.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "node ../website/server.js",
     "client": "npm start --prefix client",
     "dev": "concurrently \"npm run start\" \"npm run client\""
   },
@@ -15,6 +15,7 @@
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
-    "express": "^4.19.2"
+    "express": "^4.19.2",
+    "mongoose": "^8.4.3"
   }
 }
