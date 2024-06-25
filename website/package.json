@@ -6,7 +6,7 @@
   "scripts": {
     "start": "node ../website/server.js",
     "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run start\" \"npm run client\""
+    "dev": "concurrently \"npx kill-port 10000\" \"npm run start\" \"npm run client\""
   },
   "keywords": [],
   "author": "Tin Ngo",
