@@ -9,7 +9,6 @@ const PORT = process.env.PORT || 5000;
  
 app.use(cors());
 app.use(express.json());
-app.use('/', express.static('dist'))
 
 // Connect to MongoDB
 const mongoUri = process.env.MONGO_URI;
