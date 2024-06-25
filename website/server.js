@@ -25,6 +25,10 @@ const todoSchema = new mongoose.Schema({
 // Create a model from the schema
 const Todo = mongoose.model("Todo", todoSchema);
 
+app.get('/', (req, res) => {
+  res.send('Hello World!')
+})
+
 // Get all todos
 app.get("/todos", async (req, res) => {
   try {
