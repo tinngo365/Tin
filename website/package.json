@@ -2,7 +2,7 @@
   "name": "website",
   "version": "1.0.0",
   "description": "Tin's personal website project",
-  "main": "../../client/src/index.jsindex.js",
+  "main": "../../client/src/index.js",
   "scripts": {
     "start": "node ../website/server.js",
     "client": "npm start --prefix client",

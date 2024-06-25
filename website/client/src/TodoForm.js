@@ -4,7 +4,7 @@ const TodoForm = ({ onAdd }) => {
   const [task, setTask] = useState("");
   const addTodo = async () => {
     try {
-      const response = await axios.post("http://localhost:5000/todos", {
+      const response = await axios.post(`${process.env.REACT_APP_API_URL}/todos`, {
         task,
       });
       onAdd(response.data);

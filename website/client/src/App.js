@@ -6,12 +6,12 @@ import "./styles/App.css"
 const App = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-    // Fetch data from the Express server
-    axios
-      .get("http://localhost:5000/todos")
+    console.log('API URL:', process.env.REACT_APP_API_URL); // This will output the API URL to the console
+    axios.get(`${process.env.REACT_APP_API_URL}/todos`)
       .then((response) => setTodos(response.data))
       .catch((error) => console.error(error));
   }, []);
+  
   const addTodo = (newTodo) => {
     setTodos([...todos, newTodo]);
   };
