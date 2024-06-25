@@ -6,8 +6,8 @@ import "./styles/App.css"
 const App = () => {
   const [todos, setTodos] = useState([]);
   useEffect(() => {
-    console.log('API URL:', process.env.REACT_APP_API_URL); // This will output the API URL to the console
-    axios.get(`${process.env.REACT_APP_API_URL}/todos`)
+    axios
+      .get(`${process.env.REACT_APP_API_URL}/todos`)
       .then((response) => setTodos(response.data))
       .catch((error) => console.error(error));
   }, []);
